@@ -1,0 +1,24 @@
+.Menu{
+    width: 100%;
+    height: 100vh;
+   background-color: rgb(51, 49, 49);
+
+    header{
+        width: 100%;
+        height: auto ;
+        background: linear-gradient(rgb(64, 113, 82),rgb(70, 127, 30),black);
+       display: flex;
+       align-items: center;
+      justify-content: center;
+        h1{
+         color: rgb(255, 255, 255);
+        }
+    }
+    .Qr{
+        width: auto;
+        height: 80vh;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+}
