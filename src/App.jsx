@@ -1,29 +1,48 @@
+
 import React from 'react'
+import Top from './components/Top'
+import { useState } from 'react'
+import items from "../src/data/product.json"
+import { Container } from 'react-bootstrap'
+import Menu from './pages/Menu'
+import Category from './pages/Category'
 
-import QRCode from 'react-qr-code'
 
+
+const allcategories = ["menu",...new Set(items.map((item)=>item.category))]
 
 const App = () => {
+
+
+
+
+const [menuItem,setMenuItem]=useState(items);
+const [categories,setCategories]=useState(allcategories);
+
+
+const filterItems=(category)=>{
+  if (category==="menu") {
+    return setMenuItem(items)
+  }else{
+    const newItems= items.filter((item)=>item.category===category)
+    return setMenuItem(newItems)
+  }
+}
+
+
   return (
-<div className="Menu">
-<header>
-<h1>Scan Menu</h1>
+  <>
+  
+  <Top/>
+  <Container>
+<Category categories={categories} filterItems={filterItems}/>
+<Menu items={menuItem}  />
 
-</header>
-
-<div className="Qr">
-<QRCode
- size={550}
- style={{height:"300px",width:"300px"}}
- value={"https://myqrcode.com/qr/960c23de"}
- />
-
-</div>
+  </Container>
 
 
-
-
-</div>
+  
+  </>
   )
 }
 
